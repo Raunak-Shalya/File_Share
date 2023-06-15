@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function App() {
-
+   const [file,setFile]=useState('');
    const Inputref=useRef();
-
    const OnUploadClick = () =>{
-    console.log("Raunak")
     Inputref.current.click();
    }
 
-
+  useEffect(()=>{
+    const getImage=async()=>{   //doubt
+      if(file){
+        const data=new FormData();
+        data.append('name',file.name)
+        data.append('file', file)
+      }
+    }
+    getImage();
+  },[file])
   return (
     <>
-    <h className="heading" >File Sharing App</h>
+    <h1 className="heading" >File Sharing App</h1>
     <p className="Para">Upload and share the download link</p>
     <button className="UploadButton" onClick={()=> OnUploadClick()}>Upload</button>
-    <input className="inputbutton" type="file"ref={Inputref}/>
+    <input className="inputbutton" type="file" ref={Inputref} onChange={(e)=>setFile(e.target.files[0])}/>
     </>
   );
 }

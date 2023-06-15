@@ -1,24 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import { useRef } from 'react';
 
 function App() {
+
+   const Inputref=useRef();
+
+   const OnUploadClick = () =>{
+    console.log("Raunak")
+    Inputref.current.click();
+   }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <h className="heading" >File Sharing App</h>
+    <p className="Para">Upload and share the download link</p>
+    <button className="UploadButton" onClick={()=> OnUploadClick()}>Upload</button>
+    <input className="inputbutton" type="file"ref={Inputref}/>
+    </>
   );
 }
 

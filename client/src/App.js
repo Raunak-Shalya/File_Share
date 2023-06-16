@@ -9,6 +9,14 @@ function App() {
    const OnUploadClick = () =>{
     Inputref.current.click();
    }
+   const onDownloadClick= ()=>{
+    if(result){
+      window.location.href=result;
+    }
+    else{
+      alert("Please Upload a File inorder to generate a link");
+    }
+   }
   useEffect(()=>{
     const getImage=async()=>{  
       if(file){
@@ -23,11 +31,22 @@ function App() {
   },[file])
   return (
     <>
+    <div className='container'> 
+    
+    <body>
+  <div>
+     <div class="wave"></div>
+     <div class="wave"></div>
+     <div class="wave"></div>
+  </div>
+</body>
+
     <h1 className="heading" >File Sharing App</h1>
     <p className="Para">Upload and share the download link</p>
-    <button className="Button" onClick={()=> OnUploadClick()}>Upload</button>
+    <button className="UButton" onClick={()=> OnUploadClick()}>Upload</button>
+    <button className='DButton' onClick={()=> onDownloadClick()}>Download</button>
     <input className="inputbutton" type="file" ref={Inputref} onChange={(e)=>setFile(e.target.files[0])}/>
-    <a href={result}>{result}</a>
+    </div>
     </>
   );
 }

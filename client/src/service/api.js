@@ -7,8 +7,9 @@ const UploadFile= async(data) =>{
     try {
         const response=await axios.post(`${API_URL}/upload`,data);
         return response.data;
-    } catch (error) {
-        console.log("Cannot give data to backend")
+    } 
+    catch (error) {
+        console.log("Cannot give data to backend", error.message)
     }
 }
 

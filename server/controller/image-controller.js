@@ -12,3 +12,16 @@ export const UploadImage= async(request,response) =>{
         console.log(error.message);
     }
 }
+
+export const getImage= async(request,response) =>{
+   try {
+     const file=await File.findById(request.params.fileId);
+     file.downloadCounter++;
+     await file.save();
+     response.download(file.path,file.name);
+   } 
+   catch (error) {
+    console.log("Cannot get Image from DB")
+    console.log(error.message)
+   }
+}
